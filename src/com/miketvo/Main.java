@@ -3,7 +3,7 @@ package com.miketvo;
 public class Main {
 
   public static void main(String[] args) {
-    int iterations = 1;
+    int iterations = 1000;
     long startTime = System.nanoTime();
     for (int i = 0; i < iterations; i++) {
       System.out.printf("\nIteration %d\n", i);
