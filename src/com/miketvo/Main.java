@@ -1,22 +1,21 @@
 package com.miketvo;
 
-import java.util.Scanner;
-
 public class Main {
 
   public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
-    System.out.print("Enter a number larger or equal to 2: ");
-    int n = Integer.parseInt(sc.nextLine());
-    int[] primes = PrimeSieve.sieve(n);
-    while (n > 1) {
-      System.out.printf("Found %d primes: ", primes.length);
-      for (int prime : primes) {
-        System.out.printf("%d ", prime);
+    int iterations = 1;
+    long startTime = System.nanoTime();
+    for (int i = 0; i < iterations; i++) {
+      System.out.printf("\nIteration %d\n", i);
+      for (int n = 1; n < 542; n++) {
+        System.out.printf("n=%d; found %d primes\n", n, PrimeSieve.sieve(n).length);
       }
-      System.out.print("\n\n\nEnter a number larger or equal to 2: ");
-      n = Integer.parseInt(sc.nextLine());
-      primes = PrimeSieve.sieve(n);
     }
+    long endTime = System.nanoTime();
+    long totalTimeElapsed = endTime - startTime;
+    long averageIterationDuration = totalTimeElapsed / iterations;
+
+    System.out.printf("\nElapsed: %dns | Iteration Avg: %dns\n", totalTimeElapsed, averageIterationDuration);
+    System.out.printf("Elapsed: %dms | Iteration Avg: %dms\n", totalTimeElapsed / 1000000, averageIterationDuration / 1000000);
   }
 }
